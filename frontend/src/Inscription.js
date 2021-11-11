@@ -3,9 +3,8 @@ const Inscription = () => {
 
     return ( 
      <div className="create">
-        <h2>PAGE - INSCRIPTION(?)</h2>
+       <h1>Inscription</h1>
             <form action="#" method="POST">
-                <h1>Inscription</h1>
                 
                 <label><b>Prenom</b></label>
                 <input type="text" placeholder="Entrer votre prenom" name="prenom" required></input>
