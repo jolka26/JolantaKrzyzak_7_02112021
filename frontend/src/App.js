@@ -4,7 +4,6 @@ import Inscription from './Inscription';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Profil from './Profil';
 import Posts from './Posts';
-// import BlogDetails from './BlogDetails';
 import NotFound from './NotFound';
 
 function App() {
@@ -17,7 +16,7 @@ function App() {
           <Route exact path="/">
             <Connection />
           </Route>
-          <Route exact path="/inscription">
+          <Route path="/inscription">
             <Inscription />
           </Route>
           <Route path="/posts">
@@ -26,9 +25,6 @@ function App() {
           <Route path="/profil">
             <Profil />
           </Route>
-          {/* <Route path="/profil/:id">
-            <BlogDetails />
-          </Route>  */}
           <Route path='*'>
             <NotFound />
           </Route>

@@ -9,12 +9,9 @@ const Posts = () => {
             <textarea 
             required
             ></textarea> 
-        
             <input
             type="file"
-            name="post_image"
-            id="post_image"
-            className="icons_container__add_file"
+            className="image_file"
             onInput="#"
             />      
            <button>Ajout post</button> 
