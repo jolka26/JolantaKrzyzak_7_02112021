@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const db = require("../models");
 
 const User = db.user;
-
+require('dotenv').config();
 
 /// Find all users 
 exports.findAll = (req, res) => {
@@ -58,28 +58,29 @@ exports.signup = (req, res, next) => {
 
 
 // Connexion d'un utilisateur
-// exports.login = (req, res, next) => {
-//     User.findOne({ email: req.body.email })
-//     .then(user => {
-//         if(!user) {
-//             return res.status(401).json({error: 'utilisateur non trouve'})
-//         }
-//         bcrypt.compare(req.body.password, user.password)
-//         .then(valid => {
-//             if (!valid) {
-//                 return res.status(401).json({error: 'mot de passe incorrect'})
-//             }
-//             res.status(200).json({
-//                 id: user._id,
-//                 token: jwt.sign(
-//                     { id: user._id },
-//                     process.env.RANDOM_TOKEN_SECRET,
-//                     { expiresIn: '24h'}
-//                 )
-//             });
-//         })
-//         .catch(error => res.status(500).json({ error: "ici" }))
-//     })
-//     .catch(error => res.status(500).json({error: "ici ici"}))
-// };
+exports.login = (req, res, next) => {
+    User.findOne({ where: { email: req.body.email } })
+    .then(user => {
+        if(!user) {
+            return res.status(401).json({error: 'utilisateur non trouve'})
+        }
+        bcrypt.compare(req.body.password, user.password)
+        .then(valid => {
+            if (!valid) {
+                return res.status(401).json({error: 'mot de passe incorrect'})
+            }
+            res.status(200).json({
+                userId: user.id,
+                token: jwt.sign(
+                    { id: user.id },
+                    process.env.RANDOM_TOKEN_SECRET,
+                    { expiresIn: '24h'}
+                ),
+                message: "utilisateur connecte"
+            });
+        })
+        .catch(error => res.status(500).json({ error: "ici" }))
+    })
+    .catch(error => res.status(500).json({error: "ici ici"}))
+};
 

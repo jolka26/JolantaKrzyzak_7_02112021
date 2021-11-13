@@ -34,14 +34,6 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.BOOLEAN,
         defaultValue: 0,
       },
-      created_at: {
-        type: DataTypes.DATE,
-        allowNull: true,
-      },
-      updated_at: {
-        type: DataTypes.DATE,
-        allowNull: true,
-      },
     },
     {
       underscored: true,
@@ -57,7 +49,6 @@ module.exports = (sequelize, DataTypes) => {
 //     firstname: "zenowefa",
 //     lastname: "kolebka",
 //     password: "veryhardpass",
-
 //     profil_image: "myimage.png",
 //     is_admin: false,
 
@@ -69,6 +60,14 @@ module.exports = (sequelize, DataTypes) => {
 //   "password": "veryhardpass",
 //   "profil_image": "myimage.png",
 //   "is_admin": true
+// }
+
+// {
+//   "email": "bruno@mail.com",
+//   "firstname": "bruno",
+//   "lastname": "black",
+//   "password": "veryhardpass",
+//   "profil_image": "myimage.png"
 // }
 
 
