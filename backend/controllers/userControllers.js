@@ -9,9 +9,9 @@ require('dotenv').config();
 /// Find all users 
 exports.findAll = (req, res) => {
 
-    User.findAll()
-    .then(users => res.status(200).json(users))
-    .catch(error => res.status(400).json({message: "USERS not found"}));
+  User.findAll()
+  .then(users => res.status(200).json(users))
+  .catch(error => res.status(400).json({message: "USERS not found"}));
 }
 
 // Find one user
@@ -118,7 +118,7 @@ exports.modifyUser = (req, res, next) => {
   exports.deleteUser = (req, res, next) => {
     User.update({
         email: "anonim",
-        is_admin: 0,
+        is_active: 0,
         // profil_image: "http://localhost:3000/images/random_photo.png",
 
     },

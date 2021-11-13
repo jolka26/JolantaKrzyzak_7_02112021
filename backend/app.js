@@ -8,8 +8,8 @@ const path = require('path');
 // const cors = require('cors');
 
 
-const userRoutes = require('./routes/user.routes');
-// const postsRoutes = require('./routes/posts.routes');
+const userRoutes = require('./routes/userRoutes');
+const postsRoutes = require('./routes/postRoutes');
 
 require('dotenv').config();
 const app = express();
@@ -39,7 +39,7 @@ app.use('/', userRoutes);
 // app.use('/auth/login', userRoutes);
 
 // app.use('/')
-// app.use('/posts', postsRoutes);
+app.use('/posts/', postsRoutes);
 
 
 module.exports = app;
