@@ -1,14 +1,14 @@
-const Posts = require('../models/posts.models');
+// const Posts = require('../models/posts.models');
 
 
-exports.getAll = (req, res) => {};
-exports.getOne = (req, res) => {};
+// exports.getAll = (req, res) => {};
+// exports.getOne = (req, res) => {};
 
 
-exports.createOne = (req, res) => {};
+// exports.createOne = (req, res) => {};
 
 
 
-exports.updateOne = (req, res) => {};
-exports.deleteOne = (req, res) => {};
+// exports.updateOne = (req, res) => {};
+// exports.deleteOne = (req, res) => {};
 

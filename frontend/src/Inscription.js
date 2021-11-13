@@ -5,12 +5,13 @@ const Inscription = () => {
      <div className="create">
        <h1>Inscription</h1>
             <form action="#" method="POST">
+            {/* <form action="/signup/create" method="POST"> */}
                 
                 <label><b>Prenom</b></label>
-                <input type="text" placeholder="Entrer votre prenom" name="prenom" required></input>
+                <input type="text" placeholder="Entrer votre prenom" name="firstname" required></input>
                 
                 <label><b>Nom</b></label>
-                <input type="text" placeholder="Entrer votre nom" name="nom" required></input>
+                <input type="text" placeholder="Entrer votre nom" name="lastname" required></input>
 
                 <label><b>Email</b></label>
                 <input type="text" placeholder="Entrer votre adress email" name="email" required></input>

@@ -16,7 +16,7 @@ function App() {
           <Route exact path="/">
             <Connection />
           </Route>
-          <Route path="/inscription">
+          <Route path="/signup">
             <Inscription />
           </Route>
           <Route path="/posts">
