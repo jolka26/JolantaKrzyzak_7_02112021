@@ -48,7 +48,7 @@ exports.signup = (req, res, next) => {
             lastname: req.body.lastname,
             password: hash,
             profil_image: req.body.profil_image,
-            is_admin: req.body.is_admin,
+            is_admin: req.body.is_admin
 
         });
         user.save()
@@ -90,7 +90,8 @@ exports.login = (req, res, next) => {
 exports.modifyUser = (req, res, next) => {
     let password;
     if (req.body.password) {
-      bcrypt.hash(req.body.password, 10).then((hash) => {
+      bcrypt.hash(req.body.password, 10)
+      .then((hash) => {
         password = hash;
       });
     }
@@ -112,4 +113,19 @@ exports.modifyUser = (req, res, next) => {
     };
 
 
-  
+  // Supprimer/ desactivation d'un utilisateur
+
+  exports.deleteUser = (req, res, next) => {
+    User.update({
+        email: "anonim",
+        is_admin: 0,
+        // profil_image: "http://localhost:3000/images/random_photo.png",
+
+    },
+    { 
+        where: { id: req.params.id },
+    })
+    .then(() =>res.status(200).json({ message: 'User desactivee!' }))
+    .catch((err) => res.status(500).json({ err }));
+  };
+
