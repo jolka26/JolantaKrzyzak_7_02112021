@@ -8,6 +8,7 @@ router.get('/', userCtrl.findAll);
 router.get('/:id', userCtrl.getOneUser);
 router.post('/signup', userCtrl.signup);
 router.post('/login', userCtrl.login);
+router.put('/:id', userCtrl.modifyUser);
 
 
 module.exports = router;

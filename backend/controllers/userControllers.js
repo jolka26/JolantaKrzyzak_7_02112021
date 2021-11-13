@@ -1,6 +1,7 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const db = require("../models");
+const fs = require('fs');
 
 const User = db.user;
 require('dotenv').config();
@@ -10,7 +11,7 @@ exports.findAll = (req, res) => {
 
     User.findAll()
     .then(users => res.status(200).json(users))
-    .catch(error => res.status(400).json({message: "tutaj kurwa"}));
+    .catch(error => res.status(400).json({message: "USERS not found"}));
 }
 
 // Find one user
@@ -28,7 +29,8 @@ exports.getOneUser= (req, res, next) => {
         email: user.email,
         firstname: user.firstname,
         lastname: user.lastname,
-        profile_image: user.profil_image
+        profile_image: user.profil_image,
+        password: user.password
       });
     })
     .catch((err) => res.status(500).json({ err }));
@@ -84,3 +86,30 @@ exports.login = (req, res, next) => {
     .catch(error => res.status(500).json({error: "ici ici"}))
 };
 
+// Modification d'un utilisateur
+exports.modifyUser = (req, res, next) => {
+    let password;
+    if (req.body.password) {
+      bcrypt.hash(req.body.password, 10).then((hash) => {
+        password = hash;
+      });
+    }
+    const user = {
+        email: req.body.email,
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        password,
+        profil_image: req.body.profil_image,
+        is_admin: req.body.is_admin
+    };
+    // if (req.file) {
+    //     user.profil_image = `${req.protocol}://${req.get('host')}/images/${req.file.filename}`;
+    //   }
+
+      User.update(user, { where: { id: req.params.id }})
+        .then(() =>res.status(200).json({ message: 'User modifiee!' }))
+        .catch((err) => res.status(500).json({ err }));
+    };
+
+
+  

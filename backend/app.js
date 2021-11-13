@@ -4,7 +4,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 // const { sequelize } = require('./models');
 // const helmet = require('helmet');
-// const path = require('path');
+const path = require('path');
 // const cors = require('cors');
 
 
@@ -33,7 +33,7 @@ app.use((req, res, next) => {
 app.use(bodyParser.json());
 // app.use(cors());
 
-// app.use('/images', express.static(path.join(__dirname, 'images')));
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 app.use('/', userRoutes);
 // app.use('/auth/login', userRoutes);
