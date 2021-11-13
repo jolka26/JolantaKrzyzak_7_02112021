@@ -62,4 +62,14 @@ module.exports = (sequelize, DataTypes) => {
 //     is_admin: false,
 
 
+// {
+//   "email": "danuta@mail.com",
+//   "firstname": "danuta",
+//   "lastname": "kruk",
+//   "password": "veryhardpass",
+//   "profil_image": "myimage.png",
+//   "is_admin": true
+// }
+
+
 

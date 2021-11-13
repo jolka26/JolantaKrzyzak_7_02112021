@@ -34,10 +34,10 @@ app.use(bodyParser.json());
 // app.use(cors());
 
 // app.use('/images', express.static(path.join(__dirname, 'images')));
-// app.use("/", (req,res) => {
-//   res.json({message: "WELCOME HERE !"});
-// });
+
 app.use('/', userRoutes);
+// app.use('/auth/login', userRoutes);
+
 // app.use('/')
 // app.use('/posts', postsRoutes);
 
