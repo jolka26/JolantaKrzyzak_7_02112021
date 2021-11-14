@@ -9,7 +9,7 @@ const path = require('path');
 
 
 const userRoutes = require('./routes/userRoutes');
-const postsRoutes = require('./routes/postRoutes');
+const postRoutes = require('./routes/postRoutes');
 
 require('dotenv').config();
 const app = express();
@@ -35,11 +35,11 @@ app.use(bodyParser.json());
 
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
-app.use('/', userRoutes);
+app.use('/users', userRoutes);
 // app.use('/auth/login', userRoutes);
 
 // app.use('/')
-app.use('/posts/', postsRoutes);
+app.use('/posts', postRoutes);
 
 
 module.exports = app;

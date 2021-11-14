@@ -21,7 +21,7 @@ exports.getOneUser= (req, res, next) => {
     .then((user) => {
       if (!user) {
         return res.status(404).json({
-          message: "user not found",
+          message: "user ID not found",
         });
       }
       res.status(200).json({

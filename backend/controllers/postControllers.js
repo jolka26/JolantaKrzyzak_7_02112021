@@ -21,7 +21,7 @@ exports.createNewPost = (req, res, next) => {
 exports.getAllPosts = (req, res) => {
 
     Post.findAll()
-    .then(posts => res.status(200).json(posts))
+    .then(post => res.status(200).json(post))
     .catch(error => res.status(400).json({message: "Post not found"}));
   }
   
@@ -30,7 +30,7 @@ exports.getAllPosts = (req, res) => {
 exports.getOnePostId= (req, res, next) => {
     const id = req.params.id;
   Post.findByPk(id)
-    .then((data) => { res.status(200).json(data)})
+    .then(post => { res.status(200).json(post)})
     .catch((err) => res.status(500).json({ err }));
   }
     
