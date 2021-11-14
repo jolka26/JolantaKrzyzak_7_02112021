@@ -89,19 +89,19 @@ exports.login = (req, res, next) => {
 // Modification d'un utilisateur
 exports.modifyUser = (req, res, next) => {
   
-    // if (req.body.password) {
-    //   bcrypt.hash((req.body.password, 10))
-    //   .then(hash => {
+    if(req.body.password) {
+      bcrypt.hash((req.body.password, 10))
+      .then(hash => {
         
-    //  req.body.password = hash;
-    //  });
-    // }
+     req.body.password = hash;
+     });
+    }
 
      // if (req.file) {
     //     user.profil_image = `${req.protocol}://${req.get('host')}/images/${req.file.filename}`;
     //   }
     const userObject = req.body;
-    console.log(userObject);
+    // console.log(userObject);
    
 
       User.update({ ...userObject, id: req.params.id},{ where: { id: req.params.id }})

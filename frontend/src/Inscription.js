@@ -1,11 +1,55 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Form, Button } from 'react-bootstrap';
 import { Link } from "react-router-dom";
+
 const Inscription = () => {
 
     return ( 
      <div className="create">
-       <h1>Inscription</h1>
-            <form action="#" method="POST">
-            {/* <form action="/signup/create" method="POST"> */}
+       <h2>Inscription</h2>
+        
+            <Form>
+           <Form.Group className="mb-3" controlId="formBasicEmail">
+               <Form.Label>Email </Form.Label>
+               <Form.Control type="email" placeholder="Entrer votre email" />
+               <Form.Text className="text-muted">
+                   Utilise votre email d'entreprise.
+               </Form.Text>
+           </Form.Group>
+
+           <Form.Group className="mb-3" controlId="formBasicPassword">
+               <Form.Label>Mot de passe</Form.Label>
+               <Form.Control type="password" placeholder="Entrer votre mot de passe "/>
+           </Form.Group>
+
+           <Form.Group className="mb-3" controlId="formBasicPrenom">
+               <Form.Label>Prénom </Form.Label>
+               <Form.Control type="prenom" placeholder="Entrer votre prénom" />
+           </Form.Group>
+
+           <Form.Group className="mb-3" controlId="formBasicNom">
+               <Form.Label>Nom </Form.Label>
+               <Form.Control type="nom" placeholder="Entrer votre nom" />
+           </Form.Group>
+    
+           <Button type="submit">
+               Inscription
+           </Button>
+       </Form>
+
+
+            <Link to="/">Vous avez déja votre compte ? Connecte vous... </Link>
+    </div> 
+    
+     );
+}
+
+export default Inscription;
+
+
+
+    /* <form action="#" method="POST">
+          
                 
                 <label><b>Prenom</b></label>
                 <input type="text" placeholder="Entrer votre prenom" name="firstname" required></input>
@@ -20,12 +64,4 @@ const Inscription = () => {
                 <input type="password" placeholder="Entrer le mot de passe" name="password" required></input>
 
                 <button type="submit" id='submit' value='INSCRIPTION' >INSCRIPTION</button>
-            </form>
-
-            <Link to="/">Vous avez déja votre compte ? Connecte vous... </Link>
-    </div> 
-    
-     );
-}
-
-export default Inscription;
+            </form> */

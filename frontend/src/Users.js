@@ -1,5 +1,5 @@
 
-const Profil = () => {
+const Users = () => {
 
     return (
     <div className="create">
@@ -8,4 +8,4 @@ const Profil = () => {
 )}
 
 
-export default Profil;
+export default Users;

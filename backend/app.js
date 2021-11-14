@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-// const cors = require('cors');
+const cors = require('cors');
 // const helmet = require('helmet');
 require('dotenv').config();
 
@@ -27,7 +27,7 @@ app.use((req, res, next) => {
 
 // app.use(express.json());
 app.use(bodyParser.json());
-// app.use(cors());
+app.use(cors());
 
 app.use('/images', express.static(path.join(__dirname, 'images')));
 

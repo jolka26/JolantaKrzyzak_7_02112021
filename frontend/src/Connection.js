@@ -1,22 +1,33 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Form, Button } from 'react-bootstrap';
 import { Link } from "react-router-dom";
+
 const Connection = () => {
 
     return ( 
      <div className="create">
-       <h1>Connexion</h1>
-            <form action="#" method="POST">
-            
-                <label><b>Email</b></label>
-                <input type="text" placeholder="Entrer votre adress email" name="email" required></input>
+       <h2>Connexion</h2>
+       <Form>
+           <Form.Group className="mb-3" controlId="formBasicEmail">
+               <Form.Label>Email </Form.Label>
+               <Form.Control type="email" placeholder="Entrer votre email" />
+               <Form.Text className="text-muted">
+                   Utilise votre email d'entreprise.
+               </Form.Text>
+           </Form.Group>
 
-                <label><b>Mot de passe</b></label>
-                <input type="password" placeholder="Entrer le mot de passe" name="password" required></input>
+           <Form.Group className="mb-3" controlId="formBasicPassword">
+               <Form.Label>Mot de passe</Form.Label>
+               <Form.Control type="password" placeholder="Entrer votre mot de passe "/>
+           </Form.Group>
+    
+           <Button variant="primary" type="submit">
+               Connexion
+           </Button>
+       </Form>
 
-                <button type="submit" id='submit' value='LOGIN' >LOGIN</button>
-            </form>
-
-            <Link to="/inscription">Vous n'avez pas encore créer votre compte ? Clique ici... </Link>
-    </div> 
+       <Link to="/signup">Vous n'avez pas encore créer votre compte ? Clique ici... </Link>
+   </div>
     
      );
 }
