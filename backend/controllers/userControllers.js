@@ -46,7 +46,7 @@ exports.signup = (req, res, next) => {
             email: req.body.email,
             firstname: req.body.firstname,
             lastname: req.body.lastname,
-            password,
+            password: hash,
             profil_image: req.body.profil_image,
             is_admin: req.body.is_admin
 
@@ -88,29 +88,37 @@ exports.login = (req, res, next) => {
 
 // Modification d'un utilisateur
 exports.modifyUser = (req, res, next) => {
-    let password;
+ 
+    let password ;
+  
     if (req.body.password) {
-      bcrypt.hash(req.body.password, 10)
-      .then((hash) => {
-        password = hash;
-      });
+  
+      bcrypt.hash((req.body.password, 10))
+      .then(hash => {
+        
+     password = hash;
+     });
+      // console.log("new password: ");
+      // console.log(password);
+      
     }
-    const user = {
-        email: req.body.email,
-        firstname: req.body.firstname,
-        lastname: req.body.lastname,
-        password,
-        profil_image: req.body.profil_image,
-        is_active: req.body.is_active
-    };
-    
-    const userOcject = req.body;
+   
+    // const user = {
+    //     firstname: req.body.firstname,
+    //     lastname: req.body.lastname,
+    //     password,
+    //     profil_image: req.body.profil_image,
+
+    // };
+    const userObject = req.body;
+    // console.log(userObject);
+   
     // if (req.file) {
     //     user.profil_image = `${req.protocol}://${req.get('host')}/images/${req.file.filename}`;
     //   }
 
   
-      User.update({ ...userOcject, id:  req.params.id},{ where: { id: req.params.id }})
+      User.update({ ...userObject, id: req.params.id},{ where: { id: req.params.id }})
 
         .then(() =>res.status(200).json({ message: 'User modifiee!' }))
         .catch((err) => res.status(500).json({ err }));

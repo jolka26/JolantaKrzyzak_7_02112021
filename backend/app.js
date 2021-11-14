@@ -1,24 +1,20 @@
 const express = require('express');
-// const DB = require('./config/connection');
-
 const bodyParser = require('body-parser');
-// const { sequelize } = require('./models');
-// const helmet = require('helmet');
 const path = require('path');
 // const cors = require('cors');
-
+// const helmet = require('helmet');
+require('dotenv').config();
 
 const userRoutes = require('./routes/userRoutes');
 const postRoutes = require('./routes/postRoutes');
 
-require('dotenv').config();
+
 const app = express();
 
 const db = require('./models');
 db.sequelize.sync({alter: false})
 .then(() => console.log('Connexion à DB réussie !'))
 .catch((error) => console.log(error + 'Connexion à DB échouée !'));
-
 
 
 // app.use(helmet());
@@ -36,10 +32,7 @@ app.use(bodyParser.json());
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
 app.use('/users', userRoutes);
-// app.use('/auth/login', userRoutes);
-
-// app.use('/')
 app.use('/posts', postRoutes);
-
+// app.use('/auth/login', userRoutes);
 
 module.exports = app;
