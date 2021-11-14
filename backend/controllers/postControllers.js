@@ -22,7 +22,7 @@ exports.getAllPosts = (req, res) => {
 
     Post.findAll()
     .then(post => res.status(200).json(post))
-    .catch(error => res.status(400).json({message: "Post not found"}));
+    .catch(error => res.status(400).json({message: "Posts not found"}));
   }
   
 

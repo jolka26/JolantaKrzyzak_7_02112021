@@ -88,43 +88,28 @@ exports.login = (req, res, next) => {
 
 // Modification d'un utilisateur
 exports.modifyUser = (req, res, next) => {
- 
-    let password ;
   
-    if (req.body.password) {
-  
-      bcrypt.hash((req.body.password, 10))
-      .then(hash => {
+    // if (req.body.password) {
+    //   bcrypt.hash((req.body.password, 10))
+    //   .then(hash => {
         
-     password = hash;
-     });
-      // console.log("new password: ");
-      // console.log(password);
-      
-    }
-   
-    // const user = {
-    //     firstname: req.body.firstname,
-    //     lastname: req.body.lastname,
-    //     password,
-    //     profil_image: req.body.profil_image,
+    //  req.body.password = hash;
+    //  });
+    // }
 
-    // };
-    const userObject = req.body;
-    // console.log(userObject);
-   
-    // if (req.file) {
+     // if (req.file) {
     //     user.profil_image = `${req.protocol}://${req.get('host')}/images/${req.file.filename}`;
     //   }
+    const userObject = req.body;
+    console.log(userObject);
+   
 
-  
       User.update({ ...userObject, id: req.params.id},{ where: { id: req.params.id }})
-
         .then(() =>res.status(200).json({ message: 'User modifiee!' }))
         .catch((err) => res.status(500).json({ err }));
-
-        
     };
+   
+   
   
 
   // Supprimer/ desactivation d'un utilisateur
