@@ -15,7 +15,7 @@ require('dotenv').config();
 const app = express();
 
 const db = require('./models');
-db.sequelize.sync()
+db.sequelize.sync({alter: false})
 .then(() => console.log('Connexion à DB réussie !'))
 .catch((error) => console.log(error + 'Connexion à DB échouée !'));
 

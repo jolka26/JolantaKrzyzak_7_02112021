@@ -13,7 +13,7 @@ exports.createNewPost = (req, res, next) => {
 
     });
     post.save()
-    .then(() => res.status(200).json({message : 'new post cree' }))
+    .then(() => res.status(200).json({message : 'new post cree!' }))
     .catch(error => res.status(500).json({ error }))
 };
  
@@ -38,5 +38,29 @@ exports.getOnePostId= (req, res, next) => {
 /// Récupération de tous les posts d'un utilisateur
 
 
-// exports.updateOnePost = (req, res) => {};
-// exports.deleteOnePost = (req, res) => {};
+
+//Modification d'un post
+exports.modifyOnePost = (req, res, next) => {
+    const post = {
+      content: req.body.content,
+    };
+    const postObject = req.body;
+
+    Post.update({...postObject,id: req.params.id},{ 
+        where: {id: req.params.id},
+        returning: true,
+    })
+    .then(() =>res.status(200).json({message: "Post modifiee!"}))
+    .catch((err) => res.status(500).json({ err}));
+  
+
+};
+
+
+
+//Suppression d'un post
+exports.deleteOnePost = (req, res, next) => {
+    Post.destroy({ where: { id: req.params.id,},})
+      .then(() => res.status(200).json({ message: "post supprimee!" }))
+      .catch((err) => res.status(404).json({ err }));
+  };

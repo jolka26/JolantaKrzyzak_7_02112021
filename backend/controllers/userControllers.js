@@ -26,7 +26,7 @@ exports.getOneUser= (req, res, next) => {
       }
       res.status(200).json({
         id: user.id,
-        email: user.email,
+        // email: user.email,
         firstname: user.firstname,
         lastname: user.lastname,
         profile_image: user.profil_image,
@@ -46,7 +46,7 @@ exports.signup = (req, res, next) => {
             email: req.body.email,
             firstname: req.body.firstname,
             lastname: req.body.lastname,
-            password: hash,
+            password,
             profil_image: req.body.profil_image,
             is_admin: req.body.is_admin
 
@@ -101,17 +101,23 @@ exports.modifyUser = (req, res, next) => {
         lastname: req.body.lastname,
         password,
         profil_image: req.body.profil_image,
-        is_admin: req.body.is_admin
+        is_active: req.body.is_active
     };
+    
+    const userOcject = req.body;
     // if (req.file) {
     //     user.profil_image = `${req.protocol}://${req.get('host')}/images/${req.file.filename}`;
     //   }
 
-      User.update(user, { where: { id: req.params.id }})
+  
+      User.update({ ...userOcject, id:  req.params.id},{ where: { id: req.params.id }})
+
         .then(() =>res.status(200).json({ message: 'User modifiee!' }))
         .catch((err) => res.status(500).json({ err }));
-    };
 
+        
+    };
+  
 
   // Supprimer/ desactivation d'un utilisateur
 
