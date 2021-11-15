@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 const Inscription = () => {
 
     return ( 
-     <div className="create">
+     <div className="create log">
        <h2>Inscription</h2>
         
-            <Form>
+        <Form>
            <Form.Group className="mb-3" controlId="formBasicEmail">
                <Form.Label>Email </Form.Label>
                <Form.Control type="email" placeholder="Entrer votre email" />
@@ -37,8 +37,8 @@ const Inscription = () => {
            </Button>
        </Form>
 
-
-            <Link to="/">Vous avez déja votre compte ? Connecte vous... </Link>
+            <p>Vous avez déja votre compte ?</p>
+            <Link to="/"> Connexion ici...</Link>
     </div> 
     
      );

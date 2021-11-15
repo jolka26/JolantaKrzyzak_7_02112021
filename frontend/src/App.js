@@ -6,6 +6,7 @@ import NotFound from './NotFound';
 import Navbar from './Navbar';
 import Connection from './Connection';
 import Inscription from './Inscription';
+import Home from './Home';
 
 function App() {
   return ( 
@@ -15,6 +16,9 @@ function App() {
       <div className="content ">
         <Switch>
           <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/login">
             <Connection />
           </Route>
           <Route path="/signup">
@@ -26,9 +30,6 @@ function App() {
           <Route path="/users">
             <Users />
           </Route>
-          {/* <Route path="/posts/:id">
-            <Profil />
-          </Route> */}
           <Route path='*'>
             <NotFound />
           </Route>

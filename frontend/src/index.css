@@ -108,12 +108,16 @@
   padding: 8px;
   border-radius: 8px;
   cursor: pointer;
-  margin: 10px 0 20px 0;
+  margin: 10px 0 10px 0;
 }
 .create button:hover {
   background: #f1356d;
 }
-
+.log {
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  padding: 20px;
+}
 .container {
   text-align: center;
 }
