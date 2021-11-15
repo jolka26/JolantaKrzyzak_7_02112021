@@ -20,7 +20,16 @@ const Posts = () => {
          <Button type="submit"> Ajout </Button>
      </Form>
 
-     {/* <div className="card gedf-card">
+ </div>
+ 
+
+    )
+}
+
+export default Posts;
+
+
+     /* <div className="card gedf-card">
        <div class="card-body">
 
            <a class="card-link" href=" ">
@@ -38,11 +47,4 @@ const Posts = () => {
            <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
 
        </div>
-   </div> */}
- </div>
- 
-
-    )
-}
-
-export default Posts;
+   </div> */
