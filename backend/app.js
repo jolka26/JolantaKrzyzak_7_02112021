@@ -12,7 +12,7 @@ const postRoutes = require('./routes/postRoutes');
 const app = express();
 
 const db = require('./models');
-db.sequelize.sync({alter: false})
+db.sequelize.sync({force:true})
 .then(() => console.log('Connexion à DB réussie !'))
 .catch((error) => console.log(error + 'Connexion à DB échouée !'));
 

@@ -15,8 +15,6 @@ const Connection = () => {
         e.preventDefault();
 
         const connection = { email, password };
-
-        // setIsPanding(true);
        
         fetch('http://localhost:5000/users/login', {
             method: 'POST',
@@ -27,65 +25,22 @@ const Connection = () => {
         .then((result) => {
             localStorage.setItem('token', JSON.stringify(result));
             let storage = JSON.parse(localStorage.getItem('token'));
-            if(storage.token === undefined) {
+            if(storage[1].token === undefined) {
                 
                 alert ("Utilisateur non identifié. Tentez de vous connecter à nouveau !");
+                storage.clear();
                 console.log(storage);
             } else {
                 console.log("ok");
                 history.push('/posts');
                 return storage;
-              
-               
             }
         })
         .catch((err) => {
             console.log("ERROR");
         })
     };
-        // .then(() => {
-        //     console.log("connection");
-        //     // setIsPanding(false);
-
-        // // history.go(1);
-        //     // history.push('/posts');
-        // })
-        // .catch((err) => 
-        // console.log("ERROR"));
-        // fetch('http://localhost:5000/users/login', {
-        //     method: "post",
-        //     headers: {"Content-type" : 'aplication/json'},
-        //     data: JSON.stringify({
-        //         email: email.value,
-        //         password: password.value
-        //     })
-        // })
-        // .then(res => res.json())
-        // .then((token) => {
-        //     localStorage.setItem('token', JSON.stringify(token));
-        //     let storage = JSON.parse(localStorage.getItem('token'));
-        //     if(storage.token === undefined) {
-                
-        //         alert ("Utilisateur non identifié. Tentez de vous connecter à nouveau !");
-        //         console.log(storage);
-        //     }
-        // })
-        // .catch((err) => 
-        // console.log("ERROR"));
- 
-        // .then((res) => {
-        //     if(res.data.errors) {
-        //         emailError.innerHTML = <p>Error email</p>;
-        //         passwordError.innerHTML = <p>Error password</p>;
-        //     }else {
-        //         window.location = "/";
-        //     }
-
-        // })
-        // .catch((err) => { 
-        //     console.log(err);
-        // });
- 
+        
 
 
     return ( 

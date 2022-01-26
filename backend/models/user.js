@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define(
-    "user",
+    "users",
     {
       id: {
         type: DataTypes.UUID,
@@ -37,6 +37,17 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       underscored: true,
+    },{
+      classMethods: {
+  associate: function(models) {
+    //associations can be defined here
+    models.User.hasMany(models.Post,
+      { onDelete: 'cascade' });
+    
+    models.User.hasMany(models.Comment,
+      { onDelete: 'cascade' });
+  }
+}
     }
   );
  

@@ -7,6 +7,7 @@ import Navbar from './Navbar';
 import Connection from './Connection';
 import Inscription from './Inscription';
 import Home from './Home';
+// import Profil from './Profil';
 
 function App() {
   return ( 
@@ -29,7 +30,10 @@ function App() {
           </Route>
           <Route path="/users">
             <Users />
-          </Route>
+            </Route>
+            {/* <Route path="/users/">
+            <Profil />
+          </Route> */}
           <Route path='*'>
             <NotFound />
           </Route>

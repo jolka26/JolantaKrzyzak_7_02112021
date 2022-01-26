@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
     const Post = sequelize.define(
-      "post",
+      "posts",
       {
         id: {
           type: DataTypes.UUID,
@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
           type: DataTypes.UUID,
           allowNull: false,
           references: {
-              model: 'user',
+              model: 'users',
               key: 'id',
           }
         },
@@ -25,12 +25,23 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(1024),
             allowNull:true,
         },
-      },
-      {
+      },{
         underscored: true,
+      },{
+        classMethods: {
+          associate: function(models) {
+            //associations can be defined here
+            Post.belongsToMany(models.User, {
+                foreignKey: {
+                  allowNull: false
+                }            
+              });
+              models.Post.hasMany(models.Comments,
+                { onDelete: 'cascade' });
+          }
+        }
       }
     );
-   
     return Post;
-    
   };
+

@@ -37,7 +37,6 @@ exports.getOneUser= (req, res, next) => {
   }; 
 
 
-
 // // Création d'un utilisateur
 exports.signup = (req, res, next) => {
     bcrypt.hash(req.body.password, 10)
@@ -86,39 +85,38 @@ exports.login = (req, res, next) => {
     .catch(error => res.status(500).json({error: "ici ici"}))
 };
 
+
+
 // Modification d'un utilisateur
-exports.modifyUser = (req, res, next) => {
-  
-    if(req.body.password) {
-      bcrypt.hash((req.body.password, 10))
-      .then(hash => {
-        
-     req.body.password = hash;
-     });
-    }
+exports.modifyUser = async (req, res, next) => {  
+  try {    
+    if (req.body.password) {      
+    const hash = await bcrypt.hash(req.body.password, 10);
+      req.body.password = hash;
 
-     // if (req.file) {
-    //     user.profil_image = `${req.protocol}://${req.get('host')}/images/${req.file.filename}`;
-    //   }
-    const userObject = req.body;
-    // console.log(userObject);
-   
+  const userObject = req.body;
 
-      User.update({ ...userObject, id: req.params.id},{ where: { id: req.params.id }})
-        .then(() =>res.status(200).json({ message: 'User modifiee!' }))
-        .catch((err) => res.status(500).json({ err }));
-    };
-   
-   
+  await User.update({ 
+    ...userObject, id: req.params.id },
+    { where: { id: req.params.id } });
+      res.status(200).json({ message: "User modifiee!" }); 
+    }  
+    console.log(User);
+  } 
+ 
+  catch (error) {    
+    res.status(500).json({ error });  
+    console.log(error);
+  }
+};
   
 
   // Supprimer/ desactivation d'un utilisateur
-
   exports.deleteUser = (req, res, next) => {
     User.update({
         email: "anonim",
         is_active: 0,
-        // profil_image: "http://localhost:3000/images/random_photo.png",
+        profil_image: "http://localhost:3000/images/random_photo.png",
 
     },
     { 

@@ -5,11 +5,11 @@ const auth = require('../middleware/auth');
 // const multer = require('../middleware/multer-config');
 
 
-// router.get('/', userCtrl.findAll);
+router.get('/', userCtrl.findAll);
 router.post('/signup', userCtrl.signup);
 router.post('/login',  userCtrl.login);
 router.get('/:id', auth, userCtrl.getOneUser);
-router.put('/modify/:id',auth,   userCtrl.modifyUser);
+router.put('/modify/:id', auth,  userCtrl.modifyUser);
 router.delete('/:id',auth,   userCtrl.deleteUser);
 
 

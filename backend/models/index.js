@@ -8,10 +8,23 @@ let sequelize;
     dialect: dbconnection.DB_DIALECT
   });
 
+
+
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 db.user = require("./user")(sequelize, Sequelize);
 db.post = require("./post")(sequelize, Sequelize);
+db.comments = require("./comments")(sequelize, Sequelize);
+
+//ASSOCIATIONS
+
+// db.post.hasMany(db.comments);
+// db.post.belongsTo(db.user);
+// db.user.hasMany(db.post);
+
+// db.comments.belongsTo(db.post);
+// db.comments.belongsTo(db.user);
+
 
 module.exports = db;
