@@ -36,8 +36,7 @@ const Inscription = () => {
                     return history.push('/posts');
                    
                   
-                    
-                    
+            
                     
                 }
             })

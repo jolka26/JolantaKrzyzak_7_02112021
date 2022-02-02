@@ -3,11 +3,11 @@ module.exports = (sequelize, DataTypes) => {
     "users",
     {
       id: {
-        type: DataTypes.UUID,
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
         allowNull: false,
-        defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
-        unique: true,  
+        unique: true,   
       }, 
       email: {
         type: DataTypes.STRING,

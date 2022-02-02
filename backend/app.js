@@ -12,7 +12,9 @@ const postRoutes = require('./routes/postRoutes');
 const app = express();
 
 const db = require('./models');
-db.sequelize.sync({force:true})
+db.sequelize.sync()
+// db.sequelize.sync({alter:true})
+// db.sequelize.sync({force:true})
 .then(() => console.log('Connexion à DB réussie !'))
 .catch((error) => console.log(error + 'Connexion à DB échouée !'));
 
@@ -35,6 +37,6 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 
 app.use('/users', userRoutes);
 app.use('/posts', postRoutes);
-// app.use('/auth/login', userRoutes);
+app.use('/auth/login', userRoutes);
 
 module.exports = app;

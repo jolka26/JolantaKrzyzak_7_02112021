@@ -1,5 +1,6 @@
 const db = require("../models");
 const Post = db.post;
+const Comments = db.comments;
 
 
 
@@ -56,11 +57,31 @@ exports.modifyOnePost = (req, res, next) => {
 
 };
 
-
-
 //Suppression d'un post
 exports.deleteOnePost = (req, res, next) => {
     Post.destroy({ where: { id: req.params.id,},})
       .then(() => res.status(200).json({ message: "post supprimee!" }))
       .catch((err) => res.status(404).json({ err }));
   };
+
+//// // Création d'un commentaire
+  exports.createComments = (req, res, next) => {
+    const comments = new Comments({
+        id: req.body.id,
+        user_id: req.body.user_id,
+        post_id: req.body.post_id,
+        content: req.body.content,
+
+    });
+    comments.save()
+    .then(() => res.status(200).json({message : 'comment ok' }))
+    .catch(error => res.status(500).json({ error }))
+};
+
+
+//Suppression d'un post
+exports.deleteComments = (req, res, next) => {
+  Comments.destroy({ where: { id: req.params.id,},})
+    .then(() => res.status(200).json({ message: "comments supprimee!" }))
+    .catch((err) => res.status(404).json({ err }));
+};

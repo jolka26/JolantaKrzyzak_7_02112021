@@ -3,14 +3,14 @@ module.exports = (sequelize, DataTypes) => {
       "posts",
       {
         id: {
-          type: DataTypes.UUID,
+          type: DataTypes.INTEGER,
+          autoIncrement: true,
           allowNull: false,
-          defaultValue: DataTypes.UUIDV4,
           primaryKey: true,
           unique: true, 
         },
         user_id: {
-          type: DataTypes.UUID,
+          type: DataTypes.INTEGER,
           allowNull: false,
           references: {
               model: 'users',

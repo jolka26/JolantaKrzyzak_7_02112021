@@ -6,11 +6,17 @@ const postsCtrl = require('../controllers/postControllers');
 
 
 router.get('/',  postsCtrl.getAllPosts);
-router.get('/:id',  postsCtrl.getOnePostId)
+router.get('/:id',  postsCtrl.getOnePostId);
+
 // router.get('/:id', auth, postsCtrl.getAllFromOneUser)
+
 router.post('/create',  postsCtrl.createNewPost);
+router.post('/create/comments', postsCtrl.createComments);
+
 router.put('/modify/:id',  postsCtrl.modifyOnePost);
+
 router.delete('/:id',  postsCtrl.deleteOnePost);
+router.delete('/comments/:id', postsCtrl.deleteComments);
  
 
 module.exports = router;
