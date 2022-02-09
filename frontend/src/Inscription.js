@@ -26,18 +26,14 @@ const Inscription = () => {
         })
             .then(response => response.json())
             .then((result) => {
-                // localStorage.setItem('token', JSON.stringify(result));
-                // let storage=  JSON.parse(localStorage.getItem('token'));
                 if (result.error) { 
                     alert("Erreur : Il y a eu une erreur"); 
                     
                 } else { 
                     alert("Votre compte à bien été créé ! Connectez-vous pour accéder aux derniers échanges.")
-                    return history.push('/posts');
-                   
-                  
-            
-                    
+                    console.log("Utilisateur créé");
+                    console.log(result);
+                    return history.push('/login');
                 }
             })
             .catch(error => {
@@ -55,10 +51,11 @@ const Inscription = () => {
            <Form.Group className="mb-3" controlId="formBasicEmail">
                <Form.Label>Email </Form.Label>
                <Form.Control 
-               type="email" 
-               placeholder="Entrer votre email" 
-               onChange={(e) => setEmail(e.target.value)} 
+                type="email" 
+                placeholder="Entrer votre email" 
+                onChange={(e) => setEmail(e.target.value)} 
                 value={email}
+                required
                />
                <Form.Text className="text-muted">
                    Utilise votre email d'entreprise.
@@ -68,30 +65,33 @@ const Inscription = () => {
            <Form.Group className="mb-3" controlId="formBasicPassword">
                <Form.Label>Mot de passe</Form.Label>
                <Form.Control 
-               type="password" 
-               placeholder="Entrer votre mot de passe "
-               onChange={(e) => setPassword(e.target.value)} 
+                type="password" 
+                placeholder="Entrer votre mot de passe "
+                onChange={(e) => setPassword(e.target.value)} 
                 value={password}
+                required
                />
            </Form.Group>
 
            <Form.Group className="mb-3" controlId="formBasicPrenom">
                <Form.Label>Prénom </Form.Label>
                <Form.Control 
-               type="firstname" 
-               placeholder="Entrer votre prénom"
-               onChange={(e) => setPrenom(e.target.value)} 
+                type="firstname" 
+                placeholder="Entrer votre prénom"
+                onChange={(e) => setPrenom(e.target.value)} 
                 value={firstname}
+                required
                  />
            </Form.Group>
 
            <Form.Group className="mb-3" controlId="formBasicNom">
                <Form.Label>Nom </Form.Label>
                <Form.Control 
-               type="lastname" 
-               placeholder="Entrer votre nom" 
-               onChange={(e) => setNom(e.target.value)} 
+                type="lastname" 
+                placeholder="Entrer votre nom" 
+                onChange={(e) => setNom(e.target.value)} 
                 value={lastname}
+                required
                />
            </Form.Group>
     

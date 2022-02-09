@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Form, Button } from 'react-bootstrap';
 import { Link, useHistory } from "react-router-dom";
 import { useState } from 'react';
+require('dotenv').config();
 
 
 const Connection = () => {
@@ -15,30 +16,45 @@ const Connection = () => {
         e.preventDefault();
 
         const connection = { email, password };
+        // let token = JSON.parse(localStorage.getItem('token'));
+        // let usertoken = token.token;
        
         fetch('http://localhost:5000/users/login', {
             method: 'POST',
-            headers: { 'Content-Type' : "application/json"},
-            body: JSON.stringify(connection)
+            headers: { 
+                'Content-Type' : "application/json",
+                // 'Authorization' : 'Bearer ' + usertoken ,
+                
+            
+        },
+            body: JSON.stringify(connection),
+
         })
         .then(res => res.json())
         .then((result) => {
             localStorage.setItem('token', JSON.stringify(result));
-            let storage = JSON.parse(localStorage.getItem('token'));
-            if(storage[1].token === undefined) {
-                
+            let token = JSON.parse(localStorage.getItem('token'));
+            
+
+         if(!token) {
+                console.log("Utilisateur NON identifié")
+                console.log(token);
                 alert ("Utilisateur non identifié. Tentez de vous connecter à nouveau !");
-                storage.clear();
-                console.log(storage);
+                // localStorage.clear();
             } else {
-                console.log("ok");
+                console.log("Utilisateur identifié")
+                // console.log(usertoken);
+                // console.log(token);
                 history.push('/posts');
-                return storage;
-            }
+                // return { 'Authorization' : 'Bearer ' + usertoken } 
+                return token;
+    }
+     
         })
         .catch((err) => {
-            console.log("ERROR");
-        })
+            console.log("ERROR ici");
+            console.log(err);
+        });
     };
         
 
@@ -54,6 +70,7 @@ const Connection = () => {
                 placeholder="Entrer votre email" 
                 onChange={(e) => setEmail(e.target.value)} 
                 value={email}
+                required
                />
                <Form.Text className="text-muted">
                    Utilise votre email d'entreprise.
@@ -66,6 +83,7 @@ const Connection = () => {
                 placeholder="Entrer votre mot de passe "
                 onChange={(e) => setPassword(e.target.value)} 
                 value={password}
+                required
                />
            </Form.Group>
     
@@ -86,3 +104,7 @@ export default Connection;
 
 // { !isPanding && <p> </p> }
 // { isPanding && <p>conection ...</p> }
+
+       // // console.log(storage);
+            
+      

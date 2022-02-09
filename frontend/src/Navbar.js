@@ -9,7 +9,7 @@ const Navbar = () => {
             <h2>Groupomania</h2>
             <div className="links">
                 <Link to="/posts">Actualités</Link>
-                <Link to="/users" >Profil </Link>
+                <Link to="/users/id" >Profil </Link>
                 <Link to="/" style={{
                     color: "white",
                     backgroundColor: '#f1356d',

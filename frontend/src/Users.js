@@ -1,5 +1,13 @@
+// import { useState } from 'react';
+// import { Label, Form, Button } from 'react-bootstrap';
+
 
 const Users = () => {
+
+    // const [email, setEmail] = useState("");
+    // // const [password, setPassword] = useState(""); 
+    // const [firstname, setPrenom] = useState("");
+    // const [lastname, setNom] = useState("");
 
     return (
 
@@ -10,7 +18,7 @@ const Users = () => {
           <div class="row">
               <div class="col-md-6">
                   <div class="profile-img">
-                      <img src="./images/random_photo.png" alt="random_photo" />
+                      <img src="../images/random_photo.png" alt="random_photo" />
                       <div class="file btn btn-lg btn-primary">
                           Change Photo
                           <input type="file" name="file" />
@@ -20,7 +28,7 @@ const Users = () => {
               <div class="col-md-6">
                   <div class="profile-head">
                       <h5>
-                          Kshiti Ghelani
+                          {/* <Label> {firstname} {lastname}</Label> */}
                       </h5>
                       <h6>
                           Web Developer and Designer
