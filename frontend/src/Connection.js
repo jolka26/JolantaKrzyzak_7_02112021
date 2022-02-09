@@ -41,6 +41,7 @@ const Connection = () => {
                 console.log(token);
                 alert ("Utilisateur non identifié. Tentez de vous connecter à nouveau !");
                 // localStorage.clear();
+                
             } else {
                 console.log("Utilisateur identifié")
                 // console.log(usertoken);
